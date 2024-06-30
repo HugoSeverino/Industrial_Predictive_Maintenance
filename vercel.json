@@ -1,11 +1,6 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "App/app.py",
-        "use": "@vercel/static-build"
-      }
-    ],
+
     "routes": [
       { "src": "/(.*)", "dest": "App/app.py" }
     ]
