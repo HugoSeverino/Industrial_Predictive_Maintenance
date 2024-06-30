@@ -1,6 +1,7 @@
 from flask import Flask
 from dash import Dash, html
 import pandas as pd
+import os
 
 # Prétraitement des données
 data = pd.DataFrame({
