@@ -1,13 +1,17 @@
 from flask import Flask
-from dash import Dash, html
+from dash import Dash, html, dcc
 import pandas as pd
 import os
+import plotly.express as px
 
 # Prétraitement des données
 data = pd.DataFrame({
     "Category": ["A", "B", "C"],
     "Values": [10, 20, 30]
 })
+
+# Créer une figure Plotly
+fig = px.bar(data, x='Category', y='Values', title='Exemple de Graphique')
 
 # Créer une application Flask
 server = Flask(__name__)
@@ -17,7 +21,7 @@ app.layout = html.Div([
     html.H1("Visualisation des Données"),
     html.Div([
         html.P("Voici un exemple de graphique"),
-        # Graphique ou autres composants Dash
+        dcc.Graph(figure=fig)  # Afficher le graphique
     ])
 ])
 
