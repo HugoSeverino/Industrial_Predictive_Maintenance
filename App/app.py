@@ -5,7 +5,7 @@ import os
 import plotly.express as px
 
 # Chemin relatif au fichier CSV
-csv_path = 'Encoded/RGN/RGN_Date_Installation.csv'
+csv_path = '../Encoded/RGN/RGN_Date_Installation.csv'
 
 # Lire les données du fichier CSV
 data = pd.read_csv(csv_path)
@@ -13,8 +13,6 @@ data = pd.read_csv(csv_path)
 # Convertir la colonne des dates en type datetime
 data['Date de mise en service'] = pd.to_datetime(data['Date de mise en service'])
 
-# Créer une figure Plotly
-fig = px.bar(data, x='Category', y='Values', title='Exemple de Graphique')
 
 # Distribution des Dates de Mise en Service
 fig1 = px.histogram(data, x='Date de mise en service', title='Distribution des Dates de Mise en Service')
