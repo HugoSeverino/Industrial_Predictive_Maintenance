@@ -4,8 +4,12 @@ import pandas as pd
 import os
 import plotly.express as px
 
+
+base_path = os.path.dirname(__file__)
+
 # Chemin relatif au fichier CSV
-csv_path = '../Encoded/RGN/RGN_Date_Installation.csv'
+csv_path = os.path.join(base_path, '..', 'Encoded', 'RGN', 'RGN_Date_Installation.csv')
+
 
 # Lire les données du fichier CSV
 data = pd.read_csv(csv_path)
