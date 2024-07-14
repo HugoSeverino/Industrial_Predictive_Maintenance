@@ -16,20 +16,19 @@ def register_callbacks(app):
 
     @app.callback(
         [Output('graph-date-1', 'figure'),
-         Output('graph-fabricant-1', 'figure'),
-         Output('graph-modele-1', 'figure'),
+         Output('graph-modele-fabricant-1', 'figure'),
          Output('output-container-1', 'children')],
         [Input('decrypt-button-1', 'n_clicks')],
         [State('json-input-1', 'value')]
     )
     def update_graphs_1(n_clicks, json_text):
         if n_clicks > 0 and json_text:
-            mapping_df, error_message = decrypt_json(json_text)
-            if mapping_df is not None:
-                df_mapped = analysis1.apply_mapping_to_df(analysis1.data.copy(), mapping_df)
-                fig_date, fig_fabricant, fig_modele = analysis1.generate_analysis1_figures(df_mapped)
-                return fig_date, fig_fabricant, fig_modele, ""
-            return {}, {}, {}, error_message
+            mapping_dict, error_message = decrypt_json(json_text)
+            if mapping_dict is not None:
+                df_mapped = analysis1.apply_mapping_to_df(analysis1.data.copy(), mapping_dict)
+                fig_date, fig_modele_fabricant = analysis1.generate_analysis1_figures(df_mapped)
+                return fig_date, fig_modele_fabricant, ""
+            return {}, {}, error_message
         
-        fig_date, fig_fabricant, fig_modele = analysis1.generate_analysis1_figures(analysis1.data)
-        return fig_date, fig_fabricant, fig_modele, ""
+        fig_date, fig_modele_fabricant = analysis1.generate_analysis1_figures(analysis1.data)
+        return fig_date, fig_modele_fabricant, ""
