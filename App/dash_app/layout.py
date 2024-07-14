@@ -2,6 +2,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 layout = dbc.Container([
+    dcc.Location(id='url', refresh=False),
     dbc.NavbarSimple(
         children=[
             dbc.NavItem(dbc.NavLink("Analyse 1", href="/dash/analysis1")),
@@ -15,4 +16,3 @@ layout = dbc.Container([
     ),
     dbc.Container(id='page-content', className="mt-4"),
 ])
-
